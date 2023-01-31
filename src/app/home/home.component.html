@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div class="box">
+    <div class="header">
+      <div class="title">Formulário<br />para compra de<br /><span>Pacote de Stickers</span></div>
+    </div>
+    <div class="space"></div>
+    <form [formGroup]="form" novalidate>
+      <div>
+        <div class="space"></div>
+        <div class="fieldset">
+          <div class="label">Quais stickers:</div>
+          <div class="space"></div>
+          <div>
+            <section>
+
+              <div *ngFor="let framework of Frames">
+                <input type="checkbox" formArrayName="Escolhidos" [value]="framework.value"
+                  (change)="onCheckboxChange($event)" />
+                {{ framework.name}}
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="space-md"></div>
+        <div class="fieldset">
+          <div class="label">Quantos stickers de cada?</div>
+          <div class="space"></div>
+          <div class="botoes">
+            <button (click)='decrementar()' id="dec"> - </button>
+            <span id="valor"> {{ valor }} </span>
+            <button (click)='acrescentar()' id="acr"> + </button>
+          </div>
+        </div>
+        <div class="space-md"></div>
+        <div class="fieldset">
+          <div class="label">Observações:</div>
+          <div class="space"></div>
+          <textarea name="descricao" placeholder="Alguma dúvida? Recado?" formControlName="observacoes">
+				</textarea>
+        </div>
+        <div class="space-md"></div>
+        <div class="footer">
+          <button (click)="submit()">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="./home.component.ts"></script>
+</body>
+
+</html>
